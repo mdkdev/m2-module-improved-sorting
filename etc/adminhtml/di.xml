@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<!--
+ * @author Marcel de Koning
+ * @copyright Marcel de Koning, All rights reserved.
+ * @package Mdkdev_ImprovedSorting
+ -->
+<config
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd"
+>
+  <!-- sortable attributes -->
+  <virtualType
+    name="Mdkdev\ImprovedSorting\Block\Adminhtml\Form\Field\Option\ListSort"
+    type="Mdkdev\Core\Block\Adminhtml\Form\Field\Option\FieldSource"
+  >
+    <arguments>
+      <argument name="sourceModel" xsi:type="object">Magento\Catalog\Model\Config\Source\ListSort</argument>
+    </arguments>
+  </virtualType>
+
+  <!-- sort directions -->
+  <virtualType
+    name="Mdkdev\ImprovedSorting\Block\Adminhtml\Form\Field\Option\Direction"
+    type="Mdkdev\Core\Block\Adminhtml\Form\Field\Option\FieldSource"
+  >
+    <arguments>
+      <argument name="sourceModel" xsi:type="object">Mdkdev\ImprovedSorting\Model\Config\Source\Direction</argument>
+    </arguments>
+  </virtualType>
+
+  <!-- dynamic row virtual type> -->
+  <virtualType
+    name="Mdkdev\ImprovedSorting\Block\Adminhtml\Form\Field\AttributeMapping"
+    type="Mdkdev\Core\Block\Adminhtml\Form\Field\DynamicRowSelectField"
+  >
+    <arguments>
+      <argument name="fields" xsi:type="array">
+        <item name="sort_attribute" xsi:type="array">
+          <item name="label" xsi:type="string">Attribute</item>
+          <item name="renderer" xsi:type="string">Mdkdev\ImprovedSorting\Block\Adminhtml\Form\Field\Option\ListSort</item>
+          <item name="class" xsi:type="string">required-entry</item>
+        </item>
+        <item name="sort_direction" xsi:type="array">
+          <item name="label" xsi:type="string">Sort Direction</item>
+          <item name="renderer" xsi:type="string">Mdkdev\ImprovedSorting\Block\Adminhtml\Form\Field\Option\Direction</item>
+          <item name="class" xsi:type="string">required-entry</item>
+        </item>
+      </argument>
+    </arguments>
+  </virtualType>
+
+  <!-- disable sort attributes -->
+  <virtualType name="Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\Pool">
+    <arguments>
+      <argument name="modifiers" xsi:type="array">
+        <item name="improved_sorting_attributes" xsi:type="array">
+          <item name="class" xsi:type="string">Mdkdev\ImprovedSorting\Ui\DataProvider\Product\Form\Modifier\ImprovedSortingAttributes</item>
+          <item name="sortOrder" xsi:type="number">1000</item>
+        </item>
+      </argument>
+    </arguments>
+  </virtualType>
+
+  <!-- virtual type for cron expression config -->
+  <virtualType
+    name="Mdkdev\ImprovedSorting\Model\Config\Cron"
+    type="Mdkdev\Core\Model\Config\Cron"
+  >
+    <arguments>
+      <argument name="cronStringPath" xsi:type="string">crontab/default/jobs/update_sort_attributes/schedule/cron_expr</argument>
+      <argument name="cronModelPath" xsi:type="string">crontab/default/jobs/update_sort_attributes/run/model</argument>
+    </arguments>
+  </virtualType>
+</config>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+ * @author Marcel de Koning
+ * @copyright Marcel de Koning, All rights reserved.
+ * @package Mdkdev_ImprovedSorting
+ -->
+<config
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd"
+>
+  <default>
+    <improved_sorting>
+      <general>
+        <cron_frequency>0 0 * * *</cron_frequency>
+        <clean_cache>1</clean_cache>
+      </general>
+    </improved_sorting>
+  </default>
+</config>

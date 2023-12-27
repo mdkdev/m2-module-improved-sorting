@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!--
+ * @author Marcel de Koning
+ * @copyright Marcel de Koning, All rights reserved.
+ * @package Mdkdev_ImprovedSorting
+ -->
+<config
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd"
+>
+  <!-- commands -->
+  <type name="Magento\Framework\Console\CommandList">
+    <arguments>
+      <argument name="commands" xsi:type="array">
+        <item name="update_sort_attributes" xsi:type="object">Mdkdev\ImprovedSorting\Console\Command\UpdateSortAttributes</item>
+      </argument>
+    </arguments>
+  </type>
+
+  <!-- add custom sort direction -->
+  <type name="Magento\Catalog\Block\Product\ProductList\Toolbar">
+    <plugin
+      name="Mdkdev_ImprovedSorting_Plugin_Magento_Catalog_Block_Product_ProductList_ToolbarPlugin"
+      type="Mdkdev\ImprovedSorting\Plugin\Magento\Catalog\Block\Product\ProductList\ToolbarPlugin"
+      sortOrder="5"
+    />
+  </type>
+
+  <!-- map custom sort data to elasticsearch -->
+  <type name="Magento\Elasticsearch\Model\Adapter\BatchDataMapper\ProductDataMapper">
+    <plugin
+      name="Remarkt_CustomSorting_Plugin_Magento_Elasticsearch_Model_Adapter_BatchDataMapper_ProductDataMapperPlugin"
+      type="Mdkdev\ImprovedSorting\Plugin\Magento\Elasticsearch\Model\Adapter\BatchDataMapper\ProductDataMapperPlugin"
+    />
+  </type>
+
+  <!-- add config for elastic search client -->
+  <type name="Mdkdev\ImprovedSorting\Model\Client\ElasticSearch">
+    <arguments>
+      <argument name="clientOptions" xsi:type="array">
+        <item name="elasticsearch7" xsi:type="string">\Magento\Elasticsearch\Model\Config</item>
+      </argument>
+    </arguments>
+  </type>
+
+  <!-- add collectors to collector pool -->
+  <type name="Mdkdev\ImprovedSorting\Model\Collector\CollectorPool">
+    <arguments>
+      <argument name="collectors" xsi:type="array">
+        <item name="qty_ordered" xsi:type="object">Mdkdev\ImprovedSorting\Model\Collector\Sold\Collector</item>
+        <item name="qty_viewed" xsi:type="object">Mdkdev\ImprovedSorting\Model\Collector\Viewed\Collector</item>
+      </argument>
+    </arguments>
+  </type>
+</config>

@@ -1,0 +1,16 @@
+{
+    "mdkdev_improved_sorting": {
+        "column": {
+            "product_id": true,
+            "qty_ordered": true,
+            "qty_viewed": true
+        },
+        "index": {
+            "KING_IMPROVED_SORTING_PRODUCT_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "KING_IMPROVED_SORTING_PRD_ID_CAT_PRD_ENTT_ENTT_ID": true
+        }
+    }
+}

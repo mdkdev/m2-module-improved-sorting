@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<!--
+ * @author Marcel de Koning
+ * @copyright Marcel de Koning, All rights reserved.
+ * @package Mdkdev_ImprovedSorting
+ -->
+<config
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd"
+>
+  <system>
+    <section
+      id="improved_sorting"
+      translate="label"
+      type="text"
+      sortOrder="5"
+      showInDefault="1"
+      showInWebsite="1"
+      showInStore="1"
+    >
+      <label>Improved Sorting</label>
+      <tab>mdkdev</tab>
+      <resource>Mdkdev_Core::configuration</resource>
+      <!-- general group -->
+      <group
+        id="general"
+        translate="label"
+        type="text"
+        sortOrder="5"
+        showInDefault="1"
+        showInWebsite="1"
+        showInStore="1"
+      >
+        <label>General</label>
+        <!-- cron frequency -->
+        <field
+          id="cron_frequency"
+          translate="label comment"
+          sortOrder="5"
+          showInDefault="1"
+          showInWebsite="1"
+          showInStore="1"
+        >
+          <label>Cron Frequency</label>
+          <backend_model>Mdkdev\ImprovedSorting\Model\Config\Cron</backend_model>
+          <comment><![CDATA[
+            Enter the update frequency as a cron expression. Use <a href="https://crontab.guru/">Crontab Guru</a> for help.
+          ]]></comment>
+        </field>
+        <!-- clean cache -->
+        <field
+          id="clean_cache"
+          translate="label comment"
+          type="select"
+          sortOrder="10"
+          showInDefault="1"
+          showInWebsite="1"
+          showInStore="1"
+        >
+          <label>Clean Cache After Update</label>
+          <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+          <comment>Clean category cache when sort order has changed after update.</comment>
+        </field>
+      </group>
+      <group
+        id="storefront"
+        translate="label"
+        type="text"
+        sortOrder="10"
+        showInDefault="1"
+        showInWebsite="1"
+        showInStore="1"
+      >
+        <label>Storefront</label>
+        <field
+          id="attribute_sort_mapping"
+          type="select"
+          translate="label"
+          sortOrder="5"
+          showInDefault="1"
+          showInWebsite="1"
+          showInStore="1"
+        >
+          <label>Attribute Sort Mapping</label>
+          <frontend_model>Mdkdev\ImprovedSorting\Block\Adminhtml\Form\Field\AttributeMapping</frontend_model>
+          <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+        </field>
+      </group>
+    </section>
+  </system>
+</config>

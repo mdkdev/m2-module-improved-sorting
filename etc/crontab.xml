@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+ * @author Marcel de Koning
+ * @copyright Marcel de Koning, All rights reserved.
+ * @package Mdkdev_ImprovedSorting
+ -->
+<config
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd"
+>
+  <group id="mdkdev_cron_group">
+    <job
+      name="update_sort_attributes"
+      instance="Mdkdev\ImprovedSorting\Cron\UpdateSortAttributes"
+      method="execute"
+    >
+      <config_path>crontab/default/jobs/update_sort_attributes/schedule/cron_expr</config_path>
+    </job>
+  </group>
+</config>

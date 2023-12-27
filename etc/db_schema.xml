@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<!--
+ * @author Marcel de Koning
+ * @copyright Marcel de Koning, All rights reserved.
+ * @package Mdkdev_ImprovedSorting
+ -->
+<schema
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd"
+>
+  <table
+    name="mdkdev_improved_sorting"
+    resource="default"
+    engine="innodb"
+    comment="Mdkdev Improved Sorting"
+  >
+    <column
+      xsi:type="int"
+      name="product_id"
+      unsigned="true"
+      nullable="false"
+      identity="false"
+      comment="Product ID"
+    />
+    <column
+      xsi:type="decimal"
+      name="qty_ordered"
+      scale="4"
+      precision="12"
+      unsigned="true"
+      nullable="false"
+      identity="false"
+      default="0"
+      comment="Qty Ordered"
+    />
+    <column
+      xsi:type="int"
+      name="qty_viewed"
+      unsigned="true"
+      nullable="false"
+      identity="false"
+      default="0"
+      comment="Qty Viewed"
+    />
+    <constraint
+      xsi:type="primary"
+      referenceId="PRIMARY"
+    >
+      <column name="product_id"/>
+    </constraint>
+    <constraint
+      xsi:type="foreign"
+      referenceId="KING_IMPROVED_SORTING_PRODUCT_ID_CATALOG_PRODUCT_ENTITY_ENTITY_ID"
+      table="mdkdev_improved_sorting"
+      column="product_id"
+      referenceTable="catalog_product_entity"
+      referenceColumn="entity_id"
+      onDelete="CASCADE"
+    />
+    <index
+      referenceId="KING_IMPROVED_SORTING_PRODUCT_ID"
+      indexType="btree"
+    >
+      <column name="product_id"/>
+    </index>
+  </table>
+</schema>
