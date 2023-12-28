@@ -1,6 +1,11 @@
 Mdkdev_ImprovedSorting
 =
 
+# Minimum Requirements
+
+PHP: >= 8.1 \
+Magento: >= 2.4.4
+
 # Summary
 
 This module allows you to sort category and search page collections that are handles by ElasticSearch or OpenSearch, on

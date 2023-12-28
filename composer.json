@@ -7,7 +7,7 @@
     "AFL-3.0"
   ],
   "require": {
-    "mdkdev/core": "*",
+    "mdkdev/m2-core": "*",
     "php": "^8.1.0"
   },
   "autoload": {

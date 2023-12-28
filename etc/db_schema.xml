@@ -50,7 +50,7 @@
     </constraint>
     <constraint
       xsi:type="foreign"
-      referenceId="KING_IMPROVED_SORTING_PRODUCT_ID_CATALOG_PRODUCT_ENTITY_ENTITY_ID"
+      referenceId="MDKDEV_IMPROVED_SORTING_PRODUCT_ID_CATALOG_PRODUCT_ENTITY_ENTITY_ID"
       table="mdkdev_improved_sorting"
       column="product_id"
       referenceTable="catalog_product_entity"
@@ -58,7 +58,7 @@
       onDelete="CASCADE"
     />
     <index
-      referenceId="KING_IMPROVED_SORTING_PRODUCT_ID"
+      referenceId="MDKDEV_IMPROVED_SORTING_PRODUCT_ID"
       indexType="btree"
     >
       <column name="product_id"/>

@@ -9,6 +9,7 @@
   xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd"
 >
   <system>
+    <!-- improved sorting section -->
     <section
       id="improved_sorting"
       translate="label"
@@ -62,6 +63,7 @@
           <comment>Clean category cache when sort order has changed after update.</comment>
         </field>
       </group>
+      <!-- storefront group -->
       <group
         id="storefront"
         translate="label"
@@ -72,6 +74,7 @@
         showInStore="1"
       >
         <label>Storefront</label>
+        <!-- attribute sort mapping -->
         <field
           id="attribute_sort_mapping"
           type="select"
